@@ -1,0 +1,14 @@
+<h1>My Books</h1>
+<h2>Currently Borrowed</h2>
+<ul>
+  {% for b in borrowed_books %}
+    <li>{{ b.book }} (Due: {{ b.due_date }})</li>
+  {% endfor %}
+</ul>
+
+<h2>History</h2>
+<ul>
+  {% for h in history %}
+    <li>{{ h.book }} (Returned on {{ h.borrow_date }})</li>
+  {% endfor %}
+</ul>
