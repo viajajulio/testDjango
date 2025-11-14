@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import BorrowedBook
-from .forms import BorrowBookForm
+from .forms import BorrowBookForm, RegisterForm
 from catalog.models import Book
 from django.contrib.auth.decorators import login_required
 
@@ -50,3 +50,14 @@ def my_books(request):
 def overdue_books(request):
     overdue = BorrowedBook.objects.filter(due_date__lt=datetime.date.today(), returned=False)
     return render(request, 'borrowing/overdue_books.html', {'overdue_books': overdue})
+
+def register_view(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')  # Redirect to login after successful registration
+    else:
+        form = RegisterForm()
+    
+    return render(request, 'registration/register.html', {'form': form})
