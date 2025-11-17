@@ -22,7 +22,7 @@ from borrowing import views as borrowing_views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),s
 
 
 # Catalog
