@@ -7,6 +7,7 @@ class Book(models.Model):
     isbn = models.CharField(max_length=13, unique=True)
     total_copies = models.PositiveIntegerField(default=1)
     available_copies = models.PositiveIntegerField(default=total_copies)
+    cover_image = models.ImageField(upload_to='book_covers/', blank=True, null=True)  # ← novo
 
     def __str__(self):
         return self.title
